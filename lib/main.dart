@@ -47,7 +47,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
 
     return MaterialApp.router(
-      title: 'Modeef Imam Ali Holy Shrine',
+      title: 'DeepSense',
       theme: ThemeData(
         splashFactory: NoSplash.splashFactory,
         inputDecorationTheme: const InputDecorationTheme(
