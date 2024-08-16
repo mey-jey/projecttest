@@ -11,7 +11,7 @@ class PatientReservationAddress extends StatelessWidget {
       children: [
         Container(
           // width: 360,
-          height: 172,
+          height: 192,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -46,7 +46,7 @@ class PatientReservationAddress extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 15),
               SizedBox(
                 width: double.infinity,
                 child: Text(
@@ -61,7 +61,7 @@ class PatientReservationAddress extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: 20),
               ShowOnMap(),
             ],
           ),

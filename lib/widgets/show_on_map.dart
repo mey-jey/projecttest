@@ -7,18 +7,22 @@ Stack ShowOnMap() {
   return Stack(
     alignment: Alignment.center,
     children: [
-      Container(
-  decoration: ShapeDecoration(
-        shape: RoundedRectangleBorder(
-          side: BorderSide(
-              width: 1, color: Color(0x3D999FAD)),
-          borderRadius: BorderRadius.circular(10),
-        ),),
+      ClipRRect(
+        borderRadius: BorderRadius.circular(20.0), // Circular border radius
         child: SvgPicture.asset("assets/svgs/map.svg",
-            colorFilter: const ColorFilter.mode(DSColors.backgroundColor, BlendMode.srcIn),
+            colorFilter: const ColorFilter.mode(
+                DSColors.backgroundColor, BlendMode.srcATop),
             width: double.infinity,
-            fit: BoxFit.cover,
-            height: 60),
+            fit: BoxFit.fill,
+            height: 80),
+      ),
+      Container(
+        width: double.infinity,
+        height: 80,
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.05), // Overlay color with opacity
+          borderRadius: BorderRadius.circular(20.0), // Same border radius as the image
+        ),
       ),
       Center(
         child: Container(
@@ -29,8 +33,7 @@ Stack ShowOnMap() {
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(
-              side: BorderSide(
-                  width: 1, color: Color(0x3D999FAD)),
+              side: BorderSide(width: 1, color: Color(0x3D999FAD)),
               borderRadius: BorderRadius.circular(10),
             ),
             shadows: [
