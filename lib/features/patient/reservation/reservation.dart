@@ -3,42 +3,51 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../utils/theme.dart';
+import '../../../widgets/patient_reservation_address.dart';
+import '../../../widgets/patient_reservation_header.dart';
 
 class Reservation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Stack(
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
           children: [
-            Image(
-              image: AssetImage(
-                'assets/images/blue_background.png',
-              ),
-              width: double.infinity,
-              height: 160,
-            ),
-            Column(
+            Stack(
               children: [
-                TopBar(
-                    text: "",
-                    leftIcon: const Icon(
-                      Icons.share_outlined,
-                      size: 18,
-                      color: Color(0xff3D3D3D),
-                    ),
-                    rightIcon: const Icon(
-                      Icons.chevron_right,
-                      size: 18,
-                      color: Color(0xff3D3D3D),
-                    ),
-                    onClick1: () {},
-                    onClick2: () {}),
+                Image(
+                  image: AssetImage(
+                    'assets/images/blue_background.png',
+                  ),
+                  width: double.infinity,
+                  height: 160,
+                  fit: BoxFit.fill,
+                ),
+                Column(
+                  children: [
+                    TopBar(
+                        text: "",
+                        leftIcon: const Icon(
+                          Icons.share_outlined,
+                          size: 25,
+                          color: Color(0xff3D3D3D),
+                        ),
+                        rightIcon: const Icon(
+                          Icons.chevron_right,
+                          size: 25,
+                          color: Color(0xff3D3D3D),
+                        ),
+                        onClick1: () {},
+                        onClick2: () {}),
+                    // PatientReservationHeader(),
+                    // PatientReservationAddress(),
+                  ],
+                )
               ],
             )
           ],
-        )
-      ],
+        ),
+      ),
     );
   }
 }

@@ -45,7 +45,6 @@ class TopBar extends StatelessWidget {
                     fontSize: 16,
                     fontFamily: 'Peyda',
                     fontWeight: FontWeight.w500,
-                    height: 0.09,
                   ),
                 ),
               ),

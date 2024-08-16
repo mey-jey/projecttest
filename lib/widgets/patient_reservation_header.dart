@@ -4,7 +4,7 @@ import 'package:readmore/readmore.dart';
 
 import '../core/utils/colors.dart';
 
-class Doctor extends StatelessWidget {
+class PatientReservationHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -125,7 +125,7 @@ class Doctor extends StatelessWidget {
                     'پاسخگوی شما در زمینه ی بیماریهای داخلی، خونی، دیابت، فشار خون، تیرویید، گوارش، کبد، روماتولوژی  ',
                     trimMode: TrimMode.Line,
                     trimLines: 2,
-                    colorClickableText: Colors.pink,
+                    colorClickableText: Colors.blue,
                     trimCollapsedText: 'مشاهده بیشتر',
                     trimExpandedText: 'مشاهده کمتر',
                     textAlign: TextAlign.right,
@@ -196,6 +196,8 @@ class Doctor extends StatelessWidget {
                     const SizedBox(width: 8),
                     VerticalDivider(
                       color: Color(0xFF707684),
+                      indent: 20,
+                      endIndent: 0,
                       thickness: 2,
                     ),
                     Expanded(
@@ -233,6 +235,8 @@ class Doctor extends StatelessWidget {
                     const SizedBox(width: 8),
                     VerticalDivider(
                       color: Color(0xFF707684),
+                      indent: 20,
+                      endIndent: 0,
                       thickness: 2,
                     ),
                     Expanded(
