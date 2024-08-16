@@ -2,6 +2,7 @@ import 'package:doctor_app/features/patient/reservation/cubit/calendar_cubit.dar
 import 'package:doctor_app/features/patient/reservation/cubit/free_time_cubit.dart';
 import 'package:doctor_app/models/free_time_model.dart';
 import 'package:doctor_app/widgets/calendar_raw.dart';
+import 'package:doctor_app/widgets/rect_blue_button.dart';
 import 'package:doctor_app/widgets/rounded_button.dart';
 import 'package:doctor_app/widgets/tabbar.dart';
 import 'package:flutter/material.dart';
@@ -41,15 +42,12 @@ class ChooseData extends StatelessWidget {
               ),
               BlocBuilder<FreeTimeCubit, FreeTimeState>(
                 builder: (context, state) {
-                  return RoundedButton(
-                    text: 'تایید و ادامه',
-                    backgroundColor: Colors.black,
-                    onPressed: () {},
-                    iconColor: Colors.white,
-                    isActive: state.selected != null,
-                    textColor: Colors.white,
-                    inactiveBackgroundColor: Color(0xFFF1F4F7),
-                    inactiveTextColor: Color(0xFFC9CFD8),
+                  return RectBlueButton(
+                    label: 'تایید و ادامه',
+                    isEnabled: state.selected != null, // or false for the disabled state
+                    onPressed: () {
+                      // Handle the button press action
+                    },
                   );
                 },
               ),
