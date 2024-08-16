@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating/flutter_rating.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:readmore/readmore.dart';
 
 class CommentItem extends StatelessWidget {
+  String commentDate = 'دیروز';
+  int activeStar = 3;
+  String commentText = 'بسیار آگاه و دلسوز هستند. همیشه احساس می‌کنم که به خوبی شنیده می‌شوم و مراقبت خوبی دریافت می‌کنم.';
+
+  CommentItem({super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
           width: 360,
-          height: 148,
+          height: 140,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -22,7 +29,7 @@ class CommentItem extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'دیروز',
+                      commentDate,
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         color: Color(0xFF707684),
@@ -32,21 +39,18 @@ class CommentItem extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(width: 8),
-                    Container(
-                      width: 4,
-                      height: 4,
-                      clipBehavior: Clip.antiAlias,
-                      decoration: ShapeDecoration(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(1024),
-                        ),
-                      ),
+                    SvgPicture.asset(
+                        "assets/svgs/gray_circle.svg",
+                        // colorFilter: const ColorFilter.mode(
+                        //     DSColors.iconGrey, BlendMode.srcIn),
+                        width: 10,
+                        height: 10),
 
-                    ),
                     const SizedBox(width: 8),
                     Container(
                       child: StarRating(
                         rating: 4,
+                        starCount: 5,
                         allowHalfRating: false,
                         onRatingChanged: (rating) {
                           // setState(() => this.rating = rating)
@@ -59,18 +63,27 @@ class CommentItem extends StatelessWidget {
               const SizedBox(height: 12),
               SizedBox(
                 width: double.infinity,
-                child: Text(
-                  'ریزبینی، سوالات با جزئیات پزشک، تجربه یک مشاوره پزشکی خوب رو به شما میده و شما این حس رو پیدا نمی‌کنید که ایشون با یک نسخه دادن قصد دارن شمارو رو از سر خودشون باز کنن. حتما و قطعا رضایت کامل خواهید داشت بعد از مشاوره پزشکی. از آقای دکتر بابت تعهد و رفتار حرفه ای پزشکیشون تشکر میکنم. اگر به خودتون اهمیت می‌دین در انتخاب ایشون تردید نکنید.',
+                child: ReadMoreText(
+                  commentText,
+                  trimMode: TrimMode.Line,
+                  trimLines: 2,
+                  colorClickableText: Colors.blue,
+                  trimCollapsedText: 'ادامه',
+                  trimExpandedText: 'مشاهده کمتر',
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     color: Color(0xFF2B303A),
                     fontSize: 14,
                     fontFamily: 'Peyda',
                     fontWeight: FontWeight.w400,
+                      height: 1.5
                   ),
                 ),
               ),
-
+              const SizedBox(height: 8),
+              Divider(
+                  color:Colors.grey
+              ),
             ],
           ),
         ),
