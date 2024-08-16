@@ -4,14 +4,17 @@ import 'package:flutter_svg/svg.dart';
 
 import '../../../utils/theme.dart';
 import '../../../widgets/comments_header.dart';
+import '../../../widgets/comments_item.dart';
 import '../../../widgets/patient_reservation_address.dart';
 import '../../../widgets/patient_reservation_header.dart';
 import '../../../widgets/patient_reservation_price.dart';
+import '../../../widgets/rounded_button.dart';
 
 class Reservation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(
           alignment: Alignment.topCenter,
@@ -47,7 +50,20 @@ class Reservation extends StatelessWidget {
                   PatientReservationHeader(),
                   PatientReservationAddress(),
                   CommentsHeader(),
-
+                  CommentItem(),
+                  CommentItem(),
+                  CommentItem(),
+                  RoundedButton(
+                    text: 'همه نظرات (24)',
+                    backgroundColor: Colors.black,
+                    onPressed: () {},
+                    iconColor: Colors.white,
+                    icon: Icons.arrow_back_ios_new_rounded,
+                    isActive: true,
+                    textColor: Colors.white,
+                    inactiveBackgroundColor: Color(0xffF2F5F8),
+                    inactiveTextColor: Color(0xffCACFD8),
+                  ),
                 ],
               ),
             ),
@@ -55,7 +71,9 @@ class Reservation extends StatelessWidget {
               bottom: 0, // Positioned at the bottom
               left: 0,
               right: 0,
-              child: PatientReservationPrice(buttonText: 'گرفتن نوبت مشاوره',priceText: '550,000',onClick1: (){},),
+              child: PatientReservationPrice(buttonText: 'گرفتن نوبت مشاوره',
+                priceText: '550,000',
+                onClick1: () {},),
             ),
             // PatientReservationPrice(),
           ],
