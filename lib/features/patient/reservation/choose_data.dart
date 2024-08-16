@@ -2,6 +2,7 @@ import 'package:doctor_app/features/patient/reservation/cubit/calendar_cubit.dar
 import 'package:doctor_app/features/patient/reservation/cubit/free_time_cubit.dart';
 import 'package:doctor_app/models/free_time_model.dart';
 import 'package:doctor_app/widgets/calendar_raw.dart';
+import 'package:doctor_app/widgets/rounded_button.dart';
 import 'package:doctor_app/widgets/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,17 +23,37 @@ class ChooseData extends StatelessWidget {
       ],
       child: Scaffold(
         body: SafeArea(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  TopBar(text: 'انتخاب زمان مشاوره', onClick1: () {}, onClick2: () {},),
-                  const CalendarWidget(),
-                  const _ListOfTimes(),
-                ],
+          child: Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        TopBar(text: 'انتخاب زمان مشاوره', onClick1: () {}, onClick2: () {},),
+                        const CalendarWidget(),
+                        const _ListOfTimes(),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-            ),
+              BlocBuilder<FreeTimeCubit, FreeTimeState>(
+                builder: (context, state) {
+                  return RoundedButton(
+                    text: 'تایید و ادامه',
+                    backgroundColor: Colors.black,
+                    onPressed: () {},
+                    iconColor: Colors.white,
+                    isActive: state.selected != null,
+                    textColor: Colors.white,
+                    inactiveBackgroundColor: Color(0xFFF1F4F7),
+                    inactiveTextColor: Color(0xFFC9CFD8),
+                  );
+                },
+              ),
+            ],
           ),
         ),
       ),
