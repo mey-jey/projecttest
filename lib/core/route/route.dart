@@ -91,6 +91,7 @@ final GoRouter router = GoRouter(
             ),
           ],
         ),
+
         StatefulShellBranch(
           routes: <RouteBase>[
             GoRoute(

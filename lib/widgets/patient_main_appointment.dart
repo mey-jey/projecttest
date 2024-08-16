@@ -11,7 +11,7 @@ class PatientMainAppointments extends StatelessWidget {
       children: [
         Container(
           width: double.infinity,
-          height: 692,
+          height: 370,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -27,8 +27,16 @@ class PatientMainAppointments extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    SvgPicture.asset(
+                      "assets/svgs/arrow_left.svg",
+                      width: 15,
+                      height: 15,
+                      colorFilter: const ColorFilter.mode(
+                          Color(0xFF335BFF), BlendMode.srcIn),
+                    ),
+                    const SizedBox(width: 4),
                     Text(
-                      'مشاهده همه',
+                      '  مشاهده همه  ',
                       style: TextStyle(
                         color: Color(0xFF335BFF),
                         fontSize: 14,
@@ -55,7 +63,7 @@ class PatientMainAppointments extends StatelessWidget {
               const SizedBox(height: 12),
               Container(
                 width: double.infinity,
-                height: 408,
+                height: 270,
                 padding: const EdgeInsets.all(4),
                 clipBehavior: Clip.antiAlias,
                 decoration: ShapeDecoration(
@@ -137,8 +145,7 @@ class PatientMainAppointments extends StatelessWidget {
                             height: 40,
                             decoration: ShapeDecoration(
                               image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://via.placeholder.com/40x40"),
+                                image: AssetImage('assets/images/avatar_image.png'),
                                 fit: BoxFit.fill,
                               ),
                               shape: RoundedRectangleBorder(
@@ -180,20 +187,13 @@ class PatientMainAppointments extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 2, vertical: 1.33),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(),
-                                  child: SvgPicture.asset(
-                                      "assets/svgs/calendar.svg",
-                                      colorFilter: const ColorFilter.mode(
-                                          DSColors.iconGrey, BlendMode.srcIn),
-                                      width: 25,
-                                      height: 25),
-                                ),
+                                const SizedBox(width: 8),
+                                SvgPicture.asset(
+                                    "assets/svgs/calendar.svg",
+                                    colorFilter: const ColorFilter.mode(
+                                        DSColors.iconGrey, BlendMode.srcIn),
+                                    width: 20,
+                                    height: 20),
                               ],
                             ),
                           ),
@@ -219,20 +219,13 @@ class PatientMainAppointments extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 2, vertical: 1.33),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(),
-                                  child: SvgPicture.asset(
-                                      "assets/svgs/clock.svg",
-                                      colorFilter: const ColorFilter.mode(
-                                          DSColors.iconGrey, BlendMode.srcIn),
-                                      width: 25,
-                                      height: 25),
-                                ),
+                                const SizedBox(width: 8),
+                                SvgPicture.asset(
+                                    "assets/svgs/clock.svg",
+                                    colorFilter: const ColorFilter.mode(
+                                        DSColors.iconGrey, BlendMode.srcIn),
+                                    width: 20,
+                                    height: 20),
                               ],
                             ),
                           ),
@@ -258,20 +251,13 @@ class PatientMainAppointments extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: 20,
-                                  height: 20,
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 2, vertical: 1.33),
-                                  clipBehavior: Clip.antiAlias,
-                                  decoration: BoxDecoration(),
-                                  child: SvgPicture.asset(
-                                      "assets/svgs/location.svg",
-                                      colorFilter: const ColorFilter.mode(
-                                          DSColors.iconGrey, BlendMode.srcIn),
-                                      width: 25,
-                                      height: 25),
-                                ),
+                                const SizedBox(width: 8),
+                                SvgPicture.asset(
+                                    "assets/svgs/location.svg",
+                                    colorFilter: const ColorFilter.mode(
+                                        DSColors.iconGrey, BlendMode.srcIn),
+                                    width: 20,
+                                    height: 20),
                               ],
                             ),
                           ),
@@ -289,5 +275,4 @@ class PatientMainAppointments extends StatelessWidget {
       ],
     );
   }
-
 }

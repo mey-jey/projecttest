@@ -51,6 +51,7 @@ class CommentItem extends StatelessWidget {
                       child: StarRating(
                         rating: 4,
                         starCount: 5,
+                        color: Color(0xFFF6B51E),
                         allowHalfRating: false,
                         onRatingChanged: (rating) {
                           // setState(() => this.rating = rating)

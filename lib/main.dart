@@ -55,7 +55,7 @@ class _MyAppState extends State<MyApp> {
             horizontal: 16,
             vertical: 12,
           ),
-          fillColor: Color(0xffF2F2F7),
+          // fillColor: Color(0xffF2F2F7),
           filled: true,
           hintStyle: TextStyle(
             fontWeight: FontWeight.w400,
