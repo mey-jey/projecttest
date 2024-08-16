@@ -7,14 +7,23 @@ Stack ShowOnMap() {
   return Stack(
     alignment: Alignment.center,
     children: [
-      SvgPicture.asset("assets/svgs/map.svg",
-          colorFilter: const ColorFilter.mode(DSColors.iconGrey, BlendMode.srcIn),
-          width: double.infinity,
-          fit: BoxFit.cover,
-          height: 60),
+      Container(
+  decoration: ShapeDecoration(
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+              width: 1, color: Color(0x3D999FAD)),
+          borderRadius: BorderRadius.circular(10),
+        ),),
+        child: SvgPicture.asset("assets/svgs/map.svg",
+            colorFilter: const ColorFilter.mode(DSColors.backgroundColor, BlendMode.srcIn),
+            width: double.infinity,
+            fit: BoxFit.cover,
+            height: 60),
+      ),
       Center(
         child: Container(
-          width: 121,
+          width: 151,
+          height: 40,
           padding: const EdgeInsets.symmetric(horizontal: 8),
           clipBehavior: Clip.antiAlias,
           decoration: ShapeDecoration(
@@ -45,14 +54,13 @@ Stack ShowOnMap() {
                   fontSize: 12,
                   fontFamily: 'Peyda',
                   fontWeight: FontWeight.w500,
-                  height: 0.11,
                 ),
               ),
+              const SizedBox(width: 5),
               SvgPicture.asset("assets/svgs/on_map.svg",
-                  colorFilter: const ColorFilter.mode(
-                      DSColors.iconGrey, BlendMode.srcIn),
-                  width: 20,
-                  height: 20),
+                  // colorFilter: const ColorFilter.mode(DSColors.iconGrey, BlendMode.srcIn),
+                  width: 14,
+                  height: 14),
             ],
           ),
         ),

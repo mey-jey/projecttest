@@ -24,6 +24,9 @@ class Reservation extends StatelessWidget {
                   fit: BoxFit.fill,
                 ),
                 Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     TopBar(
                         text: "",
@@ -34,13 +37,13 @@ class Reservation extends StatelessWidget {
                         ),
                         rightIcon: const Icon(
                           Icons.chevron_right,
-                          size: 25,
+                          size: 35,
                           color: Color(0xff3D3D3D),
                         ),
                         onClick1: () {},
                         onClick2: () {}),
-                    // PatientReservationHeader(),
-                    // PatientReservationAddress(),
+                    PatientReservationHeader(),
+                    PatientReservationAddress(),
                   ],
                 )
               ],

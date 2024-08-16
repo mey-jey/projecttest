@@ -10,7 +10,7 @@ class PatientReservationAddress extends StatelessWidget {
     return Column(
       children: [
         Container(
-          width: 360,
+          // width: 360,
           height: 172,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Column(
@@ -33,7 +33,7 @@ class PatientReservationAddress extends StatelessWidget {
                           style: TextStyle(
                             color: Color(0xFF0D111B),
                             fontSize: 16,
-                            fontFamily: 'Peyda(FaNum)',
+                            fontFamily: 'Peyda',
                             fontWeight: FontWeight.w500,
                           ),
                         ),
@@ -55,7 +55,7 @@ class PatientReservationAddress extends StatelessWidget {
                   style: TextStyle(
                     color: Color(0xFF2B303A),
                     fontSize: 14,
-                    fontFamily: 'Peyda(FaNum)',
+                    fontFamily: 'Peyda',
                     fontWeight: FontWeight.w400,
                     height: 0.10,
                   ),
