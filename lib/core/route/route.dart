@@ -17,7 +17,7 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
-  initialLocation: '/search',
+  initialLocation: '/reservation',
   routes: <RouteBase>[
     GoRoute(
       path: '/home',
@@ -84,7 +84,7 @@ final GoRouter router = GoRouter(
                 //   label: 'Section B',
                 //   detailsPath: '/sectionB/details',
                 // );
-                return ReservationConfirmation();
+                return Reservation();
 
               },
               // routes: <RouteBase>[

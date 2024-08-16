@@ -29,14 +29,14 @@ class TopBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
+                flex: 1,
                 child:GestureDetector(
                   child: leftIcon ?? SizedBox(),
                   onTap:onClick1??(){} ,
                 )
-
-
               ),
               Expanded(
+                flex: 10,
                 child: Text(
                   text,
                   textAlign: TextAlign.right,
@@ -45,11 +45,11 @@ class TopBar extends StatelessWidget {
                     fontSize: 16,
                     fontFamily: 'Peyda',
                     fontWeight: FontWeight.w500,
-                    height: 0.09,
                   ),
                 ),
               ),
               Expanded(
+                flex: 1,
                   child:GestureDetector(
                     child: rightIcon ?? SizedBox(),
                     onTap:onClick2??(){} ,

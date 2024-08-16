@@ -7,21 +7,33 @@ Stack ShowOnMap() {
   return Stack(
     alignment: Alignment.center,
     children: [
-      SvgPicture.asset("assets/svgs/map.svg",
-          colorFilter: const ColorFilter.mode(DSColors.iconGrey, BlendMode.srcIn),
-          width: double.infinity,
-          fit: BoxFit.cover,
-          height: 60),
+      ClipRRect(
+        borderRadius: BorderRadius.circular(20.0), // Circular border radius
+        child: SvgPicture.asset("assets/svgs/map.svg",
+            colorFilter: const ColorFilter.mode(
+                DSColors.backgroundColor, BlendMode.srcATop),
+            width: double.infinity,
+            fit: BoxFit.fill,
+            height: 80),
+      ),
+      Container(
+        width: double.infinity,
+        height: 80,
+        decoration: BoxDecoration(
+          color: Colors.black.withOpacity(0.05), // Overlay color with opacity
+          borderRadius: BorderRadius.circular(20.0), // Same border radius as the image
+        ),
+      ),
       Center(
         child: Container(
-          width: 121,
+          width: 151,
+          height: 40,
           padding: const EdgeInsets.symmetric(horizontal: 8),
           clipBehavior: Clip.antiAlias,
           decoration: ShapeDecoration(
             color: Colors.white,
             shape: RoundedRectangleBorder(
-              side: BorderSide(
-                  width: 1, color: Color(0x3D999FAD)),
+              side: BorderSide(width: 1, color: Color(0x3D999FAD)),
               borderRadius: BorderRadius.circular(10),
             ),
             shadows: [
@@ -45,14 +57,13 @@ Stack ShowOnMap() {
                   fontSize: 12,
                   fontFamily: 'Peyda',
                   fontWeight: FontWeight.w500,
-                  height: 0.11,
                 ),
               ),
+              const SizedBox(width: 5),
               SvgPicture.asset("assets/svgs/on_map.svg",
-                  colorFilter: const ColorFilter.mode(
-                      DSColors.iconGrey, BlendMode.srcIn),
-                  width: 20,
-                  height: 20),
+                  // colorFilter: const ColorFilter.mode(DSColors.iconGrey, BlendMode.srcIn),
+                  width: 14,
+                  height: 14),
             ],
           ),
         ),

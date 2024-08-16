@@ -4,14 +4,13 @@ import 'package:readmore/readmore.dart';
 
 import '../core/utils/colors.dart';
 
-class Doctor extends StatelessWidget {
+class PatientReservationHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          width: 360,
-          height: 258,
+          height: 300,
           padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -19,7 +18,6 @@ class Doctor extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Container(
-                width: double.infinity,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -32,7 +30,7 @@ class Doctor extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           Container(
-                            width: double.infinity,
+                            // width: double.infinity,
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.end,
@@ -50,7 +48,6 @@ class Doctor extends StatelessWidget {
                                     fontSize: 20,
                                     fontFamily: 'Peyda',
                                     fontWeight: FontWeight.w500,
-                                    height: 0.07,
                                   ),
                                 ),
                               ],
@@ -61,7 +58,6 @@ class Doctor extends StatelessWidget {
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.end,
-                              crossAxisAlignment: CrossAxisAlignment.baseline,
                               children: [
                                 Text(
                                   '(#196382)',
@@ -82,7 +78,6 @@ class Doctor extends StatelessWidget {
                                     fontSize: 14,
                                     fontFamily: 'Peyda',
                                     fontWeight: FontWeight.w500,
-                                    height: 0.10,
                                   ),
                                 ),
                               ],
@@ -119,13 +114,12 @@ class Doctor extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               SizedBox(
-                  width: double.infinity,
                   child:
                   ReadMoreText(
                     'پاسخگوی شما در زمینه ی بیماریهای داخلی، خونی، دیابت، فشار خون، تیرویید، گوارش، کبد، روماتولوژی  ',
                     trimMode: TrimMode.Line,
                     trimLines: 2,
-                    colorClickableText: Colors.pink,
+                    colorClickableText: Colors.blue,
                     trimCollapsedText: 'مشاهده بیشتر',
                     trimExpandedText: 'مشاهده کمتر',
                     textAlign: TextAlign.right,
@@ -139,135 +133,137 @@ class Doctor extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Container(
-                width: double.infinity,
                 padding: const EdgeInsets.only(top: 8),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SvgPicture.asset("assets/svgs/star.svg",
-                                  // colorFilter: const ColorFilter.mode(DSColors.iconGrey, BlendMode.srcIn),
-                                  width: 25,
-                                  height: 25),
-                                  const SizedBox(width: 4),
-                                  Text(
-                                    '4.6',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF0D111B),
-                                      fontSize: 16,
-                                      fontFamily: 'Peyda',
-                                      fontWeight: FontWeight.w500,
+                child: IntrinsicHeight(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SvgPicture.asset("assets/svgs/star.svg",
+                                    // colorFilter: const ColorFilter.mode(DSColors.iconGrey, BlendMode.srcIn),
+                                    width: 25,
+                                    height: 25),
+                                    const SizedBox(width: 4),
+                                    Text(
+                                      '4.6',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Color(0xFF0D111B),
+                                        fontSize: 16,
+                                        fontFamily: 'Peyda',
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              'از 76 رای',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF707684),
-                                fontSize: 12,
-                                fontFamily: 'Peyda',
-                                fontWeight: FontWeight.w500,
-                                height: 0.11,
+                              const SizedBox(height: 2),
+                              Text(
+                                'از 76 رای',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF707684),
+                                  fontSize: 12,
+                                  fontFamily: 'Peyda',
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    VerticalDivider(
-                      color: Color(0xFF707684),
-                      thickness: 2,
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              '93',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF0D111B),
-                                fontSize: 16,
-                                fontFamily: 'Peyda',
-                                fontWeight: FontWeight.w500,
+                      const SizedBox(width: 8),
+                      VerticalDivider(
+                        color: Color(0xFF707684),
+                        endIndent: 0,
+                        thickness: 2,
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                '93',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF0D111B),
+                                  fontSize: 16,
+                                  fontFamily: 'Peyda',
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              'مراجع',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF707684),
-                                fontSize: 12,
-                                fontFamily: 'Peyda',
-                                fontWeight: FontWeight.w500,
+                              const SizedBox(height: 2),
+                              Text(
+                                'مراجع',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF707684),
+                                  fontSize: 12,
+                                  fontFamily: 'Peyda',
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    VerticalDivider(
-                      color: Color(0xFF707684),
-                      thickness: 2,
-                    ),
-                    Expanded(
-                      child: Container(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              '129',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF0D111B),
-                                fontSize: 16,
-                                fontFamily: 'Peyda',
-                                fontWeight: FontWeight.w500,
+                      const SizedBox(width: 8),
+                      VerticalDivider(
+                        color: Color(0xFF707684),
+                        endIndent: 0,
+                        thickness: 2,
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                '129',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF0D111B),
+                                  fontSize: 16,
+                                  fontFamily: 'Peyda',
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: 2),
-                            Text(
-                              'جلسه مشاوره',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Color(0xFF707684),
-                                fontSize: 12,
-                                fontFamily: 'Peyda',
-                                fontWeight: FontWeight.w500,
+                              const SizedBox(height: 2),
+                              Text(
+                                'جلسه مشاوره',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: Color(0xFF707684),
+                                  fontSize: 12,
+                                  fontFamily: 'Peyda',
+                                  fontWeight: FontWeight.w500,
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
