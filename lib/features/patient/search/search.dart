@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../core/utils/colors.dart';
 import '../../../utils/theme.dart';
 import '../../../widgets/patient_main_appointment.dart';
+import '../../../widgets/patient_main_bottom_section.dart';
 import '../../../widgets/patient_main_header.dart';
 
 class Search extends StatefulWidget {
@@ -24,6 +25,7 @@ class _SearchState extends State<Search> {
               PatientMainTopBar(),
               PatientMainHeader(),
               PatientMainAppointments(),
+              PatientMainBottomSection(),
             ],
           ),
         ),
