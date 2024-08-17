@@ -5,6 +5,7 @@ import 'package:doctor_app/features/patient/home/home.dart';
 import 'package:doctor_app/features/patient/notifications/notifications.dart';
 import 'package:doctor_app/features/patient/profile/profile.dart';
 import 'package:doctor_app/features/patient/reservation/choose_data.dart';
+import 'package:doctor_app/features/patient/reservation/personal_info.dart';
 import 'package:doctor_app/features/patient/search/search.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -18,6 +19,9 @@ final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
+  redirect: (context, state) {
+    return "/personal_info";
+  },
   initialLocation: '/reservation',
   routes: <RouteBase>[
     GoRoute(
@@ -38,6 +42,12 @@ final GoRouter router = GoRouter(
       path: '/chooseDate',
       builder: (BuildContext context, GoRouterState state) {
         return  const ChooseData();
+      },
+    ),
+    GoRoute(
+      path: '/personal_info',
+      builder: (BuildContext context, GoRouterState state) {
+        return  const PersonalInfo();
       },
     ),
 
