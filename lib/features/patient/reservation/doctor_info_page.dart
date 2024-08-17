@@ -22,7 +22,7 @@ class DoctorInfoPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  BaseCard(child: PatientReservationStepper(0)),
+                  BaseCard(child: StepIndicator(currentStep: 3,),),
                   const DoctorProfile(),
                   const SizedBox(height: 8),
                   const ReservationInfo(),

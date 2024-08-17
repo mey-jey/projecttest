@@ -2,6 +2,7 @@ import 'package:doctor_app/features/patient/reservation/cubit/calendar_cubit.dar
 import 'package:doctor_app/features/patient/reservation/cubit/free_time_cubit.dart';
 import 'package:doctor_app/models/free_time_model.dart';
 import 'package:doctor_app/widgets/calendar_raw.dart';
+import 'package:doctor_app/widgets/patient_reservation_stepper.dart';
 import 'package:doctor_app/widgets/rect_blue_button.dart';
 import 'package:doctor_app/widgets/rounded_button.dart';
 import 'package:doctor_app/widgets/tabbar.dart';
@@ -23,6 +24,7 @@ class ChooseData extends StatelessWidget {
         ),
       ],
       child: Scaffold(
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: Column(
             children: [
@@ -33,6 +35,7 @@ class ChooseData extends StatelessWidget {
                     child: Column(
                       children: [
                         TopBar(text: 'انتخاب زمان مشاوره', onClick1: () {}, onClick2: () {},),
+                        StepIndicator(currentStep: 1,),
                         const CalendarWidget(),
                         const _ListOfTimes(),
                       ],
