@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ActionButtons extends StatelessWidget {
   final VoidCallback onPrimaryActionPressed;
@@ -72,14 +73,4 @@ class ActionButtons extends StatelessWidget {
     );
   }
 
-  static ActionButtons success() {
-    return ActionButtons(
-      onPrimaryActionPressed: () {
-        // Handle back to home
-      },
-      onSecondaryActionPressed: () {
-        // Handle showing location
-      },
-    );
-  }
 }

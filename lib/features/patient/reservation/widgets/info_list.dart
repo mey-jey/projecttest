@@ -27,6 +27,7 @@ class InfoListWidget extends StatelessWidget {
     }
 
     return Container(
+      margin: EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: Color(0xFFF5F7F9),
         borderRadius: BorderRadius.circular(16),

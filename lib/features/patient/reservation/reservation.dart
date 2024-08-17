@@ -4,6 +4,7 @@ import 'package:doctor_app/models/comment.dart';
 import 'package:doctor_app/widgets/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../utils/theme.dart';
 import '../../../widgets/comments_bottom_sheet.dart';
@@ -104,9 +105,15 @@ class Reservation extends StatelessWidget {
               bottom: 0, // Positioned at the bottom
               left: 0,
               right: 0,
-              child: PatientReservationPrice(buttonText: 'گرفتن نوبت مشاوره',
-                priceText: '550,000',
-                onClick1: () {},),
+              child: GestureDetector(
+                onTap: () {
+                  print("object");
+                  context.go("/reservation/choose_date");
+                },
+                child: PatientReservationPrice(buttonText: 'گرفتن نوبت مشاوره',
+                  priceText: '550,000',
+                  onClick1: () {},),
+              ),
             ),
             // PatientReservationPrice(),
           ],

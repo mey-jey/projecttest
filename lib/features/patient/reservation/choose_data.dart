@@ -8,6 +8,7 @@ import 'package:doctor_app/widgets/rounded_button.dart';
 import 'package:doctor_app/widgets/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class ChooseData extends StatelessWidget {
   const ChooseData({super.key});
@@ -42,7 +43,9 @@ class ChooseData extends StatelessWidget {
                               color: Color(0xff3D3D3D),
                             ),
                             onClick1: () {},
-                            onClick2: () {}),
+                            onClick2: () {
+                              context.pop();
+                            }),
                         StepIndicator(currentStep: 1,),
                         const CalendarWidget(),
                         const _ListOfTimes(),
@@ -57,7 +60,7 @@ class ChooseData extends StatelessWidget {
                     label: 'تایید و ادامه',
                     isEnabled: state.selected != null, // or false for the disabled state
                     onPressed: () {
-                      // Handle the button press action
+                      context.go("/reservation/choose_date/personal_info");
                     },
                   );
                 },

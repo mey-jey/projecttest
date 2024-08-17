@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
 import 'widgets/action_buttons.dart';
 import 'widgets/appointment_details_card.dart';
 import 'widgets/payment_details_card.dart';
@@ -26,7 +28,12 @@ class PaymentSuccessPage extends StatelessWidget {
           transactionId: '16018519419173012',
           paymentDateTime: '1403/03/17، 09:41:08',
         ),
-        actionButtons: ActionButtons.success(),  // Specify success buttons
+        actionButtons: ActionButtons(onPrimaryActionPressed: () {
+          print("ddedddd");
+          context.go("/reservation");
+        },onSecondaryActionPressed: () {
+
+        },), // Specify success buttons
       ),
     );
   }

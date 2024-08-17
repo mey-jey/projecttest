@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 class PatientReservationPrice extends StatelessWidget {
-  String buttonText = 'گرفتن نوبت مشاوره';
-  void Function() onClick1 = () {};
-  String priceText = '550,000';
+  final String buttonText;
+  final void Function() onClick1 ;
+  final String priceText;
 
-  PatientReservationPrice(
+  const PatientReservationPrice(
       {required this.buttonText,
       required this.onClick1,
       required this.priceText,
-      super.key}) {}
+      super.key});
 
   @override
   Widget build(BuildContext context) {

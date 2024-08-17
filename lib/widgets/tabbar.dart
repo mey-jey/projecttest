@@ -39,7 +39,7 @@ class TopBar extends StatelessWidget {
                 flex: 10,
                 child: Text(
                   text,
-                  textAlign: TextAlign.right,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Color(0xFF0D111B),
                     fontSize: 16,

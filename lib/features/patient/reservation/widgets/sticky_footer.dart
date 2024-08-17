@@ -1,5 +1,6 @@
 import 'package:doctor_app/widgets/rect_blue_button.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class StickyFooter extends StatelessWidget {
   const StickyFooter({super.key});
@@ -50,7 +51,7 @@ class StickyFooter extends StatelessWidget {
           ),
           RectBlueButton(
             onPressed: () {
-              // Handle payment
+              context.go("/payment_success_page");
             },
             label: "پرداخت بیعانه",
             isEnabled: true,

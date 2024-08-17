@@ -39,24 +39,6 @@ final GoRouter router = GoRouter(
       // ],
     ),
     GoRoute(
-      path: '/chooseDate',
-      builder: (BuildContext context, GoRouterState state) {
-        return  const ChooseData();
-      },
-    ),
-    GoRoute(
-      path: '/personal_info',
-      builder: (BuildContext context, GoRouterState state) {
-        return  const PersonalInfo();
-      },
-    ),
-    GoRoute(
-      path: '/doctor_info_page',
-      builder: (BuildContext context, GoRouterState state) {
-        return  const DoctorInfoPage();
-      },
-    ),
-    GoRoute(
       path: '/payment_failed_page',
       builder: (BuildContext context, GoRouterState state) {
         return  const PaymentFailedPage();
@@ -116,21 +98,32 @@ final GoRouter router = GoRouter(
               name: "reservation",
               path: '/reservation',
               builder: (BuildContext context, GoRouterState state) {
-                // return const RootScreen(
-                //   label: 'Section B',
-                //   detailsPath: '/sectionB/details',
-                // );
                 return Reservation();
-
               },
-              // routes: <RouteBase>[
-              //   GoRoute(
-              //     path: 'details',
-              //     builder: (BuildContext context, GoRouterState state) {
-              //       return const DetailsScreen(label: 'B');
-              //     },
-              //   ),
-              // ],
+              routes: <RouteBase>[
+                GoRoute(
+                  path: 'choose_date',
+                  builder: (BuildContext context, GoRouterState state) {
+                    return const ChooseData();
+                  },
+                  routes: <RouteBase>[
+                    GoRoute(
+                      path: 'personal_info',
+                      builder: (BuildContext context, GoRouterState state) {
+                        return  const PersonalInfo();
+                      },
+                      routes: <RouteBase>[
+                        GoRoute(
+                          path: 'doctor_info_page',
+                          builder: (BuildContext context, GoRouterState state) {
+                            return  const DoctorInfoPage();
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
           ],
         ),
