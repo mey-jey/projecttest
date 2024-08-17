@@ -10,7 +10,7 @@ class PatientReservationHeader extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 300,
+          height: 240,
           padding: const EdgeInsets.all(20),
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -128,6 +128,12 @@ class PatientReservationHeader extends StatelessWidget {
                       fontSize: 14,
                       fontFamily: 'Peyda',
                       fontWeight: FontWeight.w400,
+                    ),
+                    style: TextStyle(
+                      color: Color(0xFF707684),
+                      fontSize: 14,
+                      fontFamily: 'Peyda',
+                      fontWeight: FontWeight.w500,
                     ),
                   )
               ),
