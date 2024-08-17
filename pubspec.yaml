@@ -97,7 +97,12 @@ flutter:
   fonts:
     - family: Peyda
       fonts:
-        - asset: assets/fonts/PeydaFaNum-Black.ttf
+        - asset: assets/fonts/PeydaFaNum-Light.ttf
+          weight: 300
+        - asset: assets/fonts/PeydaFaNum-Medium.ttf
+          weight: 400
+        - asset: assets/fonts/PeydaFaNum-Bold.ttf
+          weight: 500
   # example:
   # fonts:
   #   - family: Schyler

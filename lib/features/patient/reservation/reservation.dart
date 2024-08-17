@@ -64,6 +64,7 @@ class Reservation extends StatelessWidget {
                     inactiveBackgroundColor: Color(0xffF2F5F8),
                     inactiveTextColor: Color(0xffCACFD8),
                   ),
+                  SizedBox(height: 70,)
                 ],
               ),
             ),
