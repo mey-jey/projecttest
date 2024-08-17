@@ -8,15 +8,18 @@ class CommentItem extends StatelessWidget {
   int activeStar = 3;
   String commentText = 'بسیار آگاه و دلسوز هستند. همیشه احساس می‌کنم که به خوبی شنیده می‌شوم و مراقبت خوبی دریافت می‌کنم.';
 
-  CommentItem({super.key});
+  CommentItem({
+    this.commentDate="",
+    this.activeStar=0,
+    this.commentText="",
+    super.key});
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          width: 360,
-          height: 140,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,

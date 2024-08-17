@@ -1,8 +1,12 @@
+import 'dart:ffi';
+
+import 'package:doctor_app/models/comment.dart';
 import 'package:doctor_app/widgets/tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../utils/theme.dart';
+import '../../../widgets/comments_bottom_sheet.dart';
 import '../../../widgets/comments_header.dart';
 import '../../../widgets/comments_item.dart';
 import '../../../widgets/patient_reservation_address.dart';
@@ -11,6 +15,26 @@ import '../../../widgets/patient_reservation_price.dart';
 import '../../../widgets/rounded_button.dart';
 
 class Reservation extends StatelessWidget {
+  final List<Comment> commentItems = [
+    Comment( commentDate: 'دیروز',
+        commentText: "ریزبینی، سوالات با جزئیات پزشک، تجربه یک مشاوره پزشکی خوب رو به شما میده و شما این حس رو پیدا نمی‌کنید که ایشون با یک نسخه دادن قصد دارن شمارو رو از سر خودشون باز کنن. حتما و قطعا رضایت کامل خواهید داشت بعد از مشاوره پزشکی. از آقای دکتر بابت تعهد و رفتار حرفه ای پزشکیشون تشکر میکنم. اگر به خودتون اهمیت می‌دین در انتخاب ایشون تردید نکنید.",
+        starCount: 4),
+    Comment( commentDate: '5 روز پیش',
+        commentText: "بسیار آگاه و دلسوز هستند. همیشه احساس می‌کنم که به خوبی شنیده می‌شوم و مراقبت خوبی دریافت می‌کنم.",
+        starCount: 4),
+    Comment( commentDate: '17 خرداد 1403',
+        commentText: "شدیدا توصیه می‌کنم! حرفه‌ای، دقیق و با دقت در هر مشاوره.",
+        starCount: 4),
+    Comment( commentDate: 'دیروز',
+        commentText: "بسیار آگاه و دلسوز هستند. همیشه احساس می‌کنم که به خوبی شنیده می‌شوم و مراقبت خوبی دریافت می‌کنم.",
+        starCount: 4),
+    Comment( commentDate: '5 روز پیش',
+        commentText: "ریزبینی، سوالات با جزئیات پزشک، تجربه یک مشاوره پزشکی خوب رو به شما میده و شما این حس رو پیدا نمی‌کنید که ایشون با یک نسخه دادن قصد دارن شمارو رو از سر خودشون باز کنن. حتما و قطعا رضایت کامل خواهید داشت بعد از مشاوره پزشکی. از آقای دکتر بابت تعهد و رفتار حرفه ای پزشکیشون تشکر میکنم. اگر به خودتون اهمیت می‌دین در انتخاب ایشون تردید نکنید.",
+        starCount: 4),
+    Comment( commentDate: 'دیروز',
+        commentText: "بسیار آگاه و دلسوز هستند. همیشه احساس می‌کنم که به خوبی شنیده می‌شوم و مراقبت خوبی دریافت می‌کنم.",
+        starCount: 4,)
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,13 +74,21 @@ class Reservation extends StatelessWidget {
                   PatientReservationHeader(),
                   PatientReservationAddress(),
                   CommentsHeader(),
-                  CommentItem(),
-                  CommentItem(),
-                  CommentItem(),
+                  CommentItem(activeStar: 3,commentDate: "دیروز",
+                  commentText: 'ریزبینی، سوالات با جزئیات پزشک، تجربه یک مشاوره پزشکی خوب رو به شما میده و شما این حس رو پیدا نمی‌کنید که ایشون با یک نسخه دادن قصد دارن شمارو رو از سر خودشون باز کنن. حتما و قطعا رضایت کامل خواهید داشت بعد از مشاوره پزشکی. از آقای دکتر بابت تعهد و رفتار حرفه ای پزشکیشون تشکر میکنم. اگر به خودتون اهمیت می‌دین در انتخاب ایشون تردید نکنید.',
+                  ),
+                  CommentItem(activeStar: 5,commentDate: "5 روز پیش",
+                    commentText: 'بسیار آگاه و دلسوز هستند. همیشه احساس می‌کنم که به خوبی شنیده می‌شوم و مراقبت خوبی دریافت می‌کنم.',
+                  ),
+                  CommentItem(activeStar: 2,commentDate: "17 خرداد 1403",
+                    commentText: 'شدیدا توصیه می‌کنم! حرفه‌ای، دقیق و با دقت در هر مشاوره.',
+                  ),
                   RoundedButton(
                     text: 'همه نظرات (24)',
                     backgroundColor: Colors.black,
-                    onPressed: () {},
+                    onPressed: () {
+                      bottomSheetComment(context,commentItems);
+                    },
                     iconColor: Colors.white,
                     icon: Icons.arrow_back_ios_new_rounded,
                     isActive: true,

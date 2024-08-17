@@ -1,52 +1,43 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class BottomSheetApp extends StatelessWidget {
-  const BottomSheetApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Bottom Sheet Sample')),
-        body: const BottomSheetExample(),
-      ),
-    );
-  }
-}
-
-class BottomSheetExample extends StatelessWidget {
-  const BottomSheetExample({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        child: const Text('showModalBottomSheet'),
-        onPressed: () {
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                height: 200,
-                color: Colors.amber,
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const Text('Modal BottomSheet'),
-                      ElevatedButton(
-                        child: const Text('Close BottomSheet'),
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
-        },
-      ),
-    );
-  }
+import '../models/comment.dart';
+import 'comments_item.dart';
+void bottomSheetComment(BuildContext context ,List<Comment> commentItems) {
+  showModalBottomSheet<void>(
+    isScrollControlled: true,
+    context: context,
+    builder: (BuildContext context) {
+      return Column(
+        children: [
+          const SizedBox(height: 10),
+          Text(
+            'نظر 24 ',
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: Color(0xFF0D111B),
+              fontSize: 16,
+              fontFamily: 'Peyda',
+              fontWeight: FontWeight.w500,
+            ),
+          ),
+          const SizedBox(height: 10),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: commentItems.map((item) {
+                return  CommentItem(
+                  activeStar: item.starCount,
+                  commentDate: item.commentDate,
+                  commentText: item.commentText,
+                );
+              }).toList(),
+                //   onPressed: () => Navigator.pop(context),
+            ),
+          ),
+        ],
+      );
+    },
+  );
 }
