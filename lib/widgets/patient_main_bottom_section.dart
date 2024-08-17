@@ -7,8 +7,7 @@ class PatientMainBottomSection extends StatelessWidget {
     return Column(
       children: [
         Container(
-          color: Colors.red,
-          width: 360,
+          width: double.infinity,
           height: 350,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           child: Column(
