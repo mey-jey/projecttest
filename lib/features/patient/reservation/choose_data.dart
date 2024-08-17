@@ -34,7 +34,15 @@ class ChooseData extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        TopBar(text: 'انتخاب زمان مشاوره', onClick1: () {}, onClick2: () {},),
+                        TopBar(
+                            text: 'انتخاب زمان مشاوره',
+                            rightIcon: const Icon(
+                              Icons.chevron_right,
+                              size: 35,
+                              color: Color(0xff3D3D3D),
+                            ),
+                            onClick1: () {},
+                            onClick2: () {}),
                         StepIndicator(currentStep: 1,),
                         const CalendarWidget(),
                         const _ListOfTimes(),
