@@ -1,22 +1,21 @@
-
 import 'package:doctor_app/features/patient/appointments/appointments.dart';
 import 'package:doctor_app/features/patient/electronic_file/electronic_file.dart';
 import 'package:doctor_app/features/patient/home/home.dart';
 import 'package:doctor_app/features/patient/notifications/notifications.dart';
 import 'package:doctor_app/features/patient/profile/profile.dart';
-import 'package:doctor_app/features/patient/reservation/choose_data.dart';
+import 'package:doctor_app/features/patient/reservation/choose_data/ui/choose_data.dart';
 import 'package:doctor_app/features/patient/reservation/doctor_info_page.dart';
 import 'package:doctor_app/features/patient/reservation/payment_failed_page.dart';
-import 'package:doctor_app/features/patient/reservation/payment_success_page.dart';
-import 'package:doctor_app/features/patient/reservation/personal_info.dart';
+import 'package:doctor_app/features/patient/reservation/reserve_success/ui/payment_success_page.dart';
+import 'package:doctor_app/features/patient/reservation/personal_info/ui/personal_info.dart';
+import 'package:doctor_app/features/patient/search/pages/custom_serach.dart';
 import 'package:doctor_app/features/patient/search/search.dart';
+import 'package:doctor_app/features/patient/search_list/ui/search_list_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../features/navbar.dart';
 import '../../features/patient/reservation/reservation.dart';
-import '../../features/patient/reservation/reservation_confirmation.dart';
-
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 final _shellNavigatorKey = GlobalKey<NavigatorState>();
@@ -27,7 +26,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/home',
       builder: (BuildContext context, GoRouterState state) {
-        return  Home();
+        return Home();
       },
       // routes: <RouteBase>[
       //   GoRoute(
@@ -41,16 +40,21 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/payment_failed_page',
       builder: (BuildContext context, GoRouterState state) {
-        return  const PaymentFailedPage();
+        return const PaymentFailedPage();
       },
     ),
     GoRoute(
       path: '/payment_success_page',
       builder: (BuildContext context, GoRouterState state) {
-        return  const PaymentSuccessPage();
+        return const PaymentSuccessPage();
       },
     ),
-
+    GoRoute(
+      path: '/customSearch',
+      builder: (BuildContext context, GoRouterState state) {
+        return CustomSearch();
+      },
+    ),
     // GoRoute(
     //   name: "Reservation",
     //   path: '/Reservation',
@@ -83,40 +87,109 @@ final GoRouter router = GoRouter(
         StatefulShellBranch(
           routes: <RouteBase>[
             GoRoute(
-              name: "search",
-              path: '/search',
-              builder: (BuildContext context, GoRouterState state) {
-                return Search();
-              },
-            ),
+                name: "search",
+                path: '/search',
+                builder: (BuildContext context, GoRouterState state) {
+                  return Search();
+                },
+                routes: <RouteBase>[
+                  GoRoute(
+                      name: "search_list",
+                      path: 'search_list',
+                      builder: (BuildContext context, GoRouterState state) {
+                        return SearchListPage();
+                      },
+                      routes: [
+                        GoRoute(
+                            name: "reservation_info",
+                            path: ':id/:name',
+                            builder:
+                                (BuildContext context, GoRouterState state) {
+                              return Reservation(
+                                state.pathParameters["name"] ?? "no name",
+                                state.pathParameters["id"] ?? "no id",
+                              );
+                            },
+                            routes: [
+                              GoRoute(
+                                name: "choose_date",
+                                path: 'choose_date',
+                                builder: (BuildContext context,
+                                    GoRouterState state) {
+                                  final doctorId = GoRouterState.of(context)
+                                      .pathParameters['id']!;
+                                  final doctorName = GoRouterState.of(context)
+                                      .pathParameters['name']!;
+                                  return ChooseData(
+                                      doctorId: doctorId,
+                                      doctorName: doctorName);
+                                },
+                                routes: <RouteBase>[
+                                  GoRoute(
+                                    path: 'personal_info',
+                                    name: "personal_info",
+                                    builder: (BuildContext context,
+                                        GoRouterState state) {
+                                      final doctorId = GoRouterState.of(context)
+                                          .pathParameters['id']!;
+                                      final doctorName =
+                                          GoRouterState.of(context)
+                                              .pathParameters['name']!;
+                                      return PersonalInfo(doctorId, doctorName);
+                                    },
+                                    routes: <RouteBase>[
+                                      GoRoute(
+                                        path: 'doctor_info_page',
+                                        name: "doctor_info_page",
+                                        builder: (BuildContext context,
+                                            GoRouterState state) {
+                                          final doctorId =
+                                              GoRouterState.of(context)
+                                                  .pathParameters['id']!;
+                                          final doctorName =
+                                              GoRouterState.of(context)
+                                                  .pathParameters['name']!;
+                                          return DoctorInfoPage(
+                                              doctorId, doctorName);
+                                        },
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                            ]),
+                      ])
+                ]),
           ],
         ),
-
         StatefulShellBranch(
           routes: <RouteBase>[
             GoRoute(
               name: "reservation",
               path: '/reservation',
               builder: (BuildContext context, GoRouterState state) {
-                return Reservation();
+                return Reservation("no name", "no id");
               },
               routes: <RouteBase>[
                 GoRoute(
                   path: 'choose_date',
                   builder: (BuildContext context, GoRouterState state) {
-                    return const ChooseData();
+                    return ChooseData(
+                      doctorId: "2",
+                      doctorName: "doctor name",
+                    );
                   },
                   routes: <RouteBase>[
                     GoRoute(
                       path: 'personal_info',
                       builder: (BuildContext context, GoRouterState state) {
-                        return  const PersonalInfo();
+                        return PersonalInfo("2", "doctor name");
                       },
                       routes: <RouteBase>[
                         GoRoute(
                           path: 'doctor_info_page',
                           builder: (BuildContext context, GoRouterState state) {
-                            return  const DoctorInfoPage();
+                            return DoctorInfoPage("2", "doctor name");
                           },
                         ),
                       ],
@@ -219,12 +292,7 @@ final GoRouter router = GoRouter(
             ),
           ],
         ),
-
       ],
     ),
   ],
 );
-
-
-
-

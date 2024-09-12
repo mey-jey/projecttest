@@ -1,4 +1,7 @@
 import 'package:doctor_app/di/di.dart';
+import 'package:doctor_app/features/patient/reservation/reservation_info/cubit/reservation_info_cubit.dart';
+import 'package:doctor_app/features/patient/reservation/reserve_success/cubit/reserve_success_cubit.dart';
+import 'package:doctor_app/features/patient/search_list/bloc/search_list_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,6 +23,15 @@ void main() async {
     providers: [
       BlocProvider(
         create: (context) => HomeCubit(localeCubit),
+      ),
+      BlocProvider(
+        create: (context) => SearchListBloc(),
+      ),
+      BlocProvider(
+        create: (context) => ReservationInfoCubit(),
+      ),
+      BlocProvider(
+        create: (context) => ReserveSuccessCubit(),
       ),
       // BlocProvider<LocaleCubit>(
       //   create: (_) => localeCubit,

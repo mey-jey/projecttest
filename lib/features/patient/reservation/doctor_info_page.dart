@@ -6,12 +6,15 @@ import 'package:go_router/go_router.dart';
 import 'widgets/base_card.dart';
 import 'widgets/doctor_profile.dart';
 import 'widgets/payment_info.dart';
-import 'widgets/reservation_info.dart';
+import 'reservation_info/ui/reservation_info.dart';
 import 'widgets/sticky_footer.dart';
 
 
 class DoctorInfoPage extends StatelessWidget {
-  const DoctorInfoPage({super.key});
+  var doctorId;
+  var doctorName;
+
+  DoctorInfoPage(this.doctorId, this.doctorName, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +48,7 @@ class DoctorInfoPage extends StatelessWidget {
                         ),
                       ),
                       BaseCard(child: StepIndicator(currentStep: 3,),),
-                      const DoctorProfile(),
+                      DoctorProfile(doctorName),
                       const SizedBox(height: 8),
                       const ReservationInfo(),
                       const SizedBox(height: 8),

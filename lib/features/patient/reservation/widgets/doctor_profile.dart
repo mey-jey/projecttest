@@ -4,7 +4,9 @@ import 'base_card.dart';
 import 'custom_divider.dart';
 
 class DoctorProfile extends StatelessWidget {
-  const DoctorProfile({super.key});
+  String doctorName;
+
+  DoctorProfile(this.doctorName, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,21 +17,23 @@ class DoctorProfile extends StatelessWidget {
           color: const Color(0xFFF5F7F9),
           borderRadius: BorderRadius.circular(12),
         ),
-        child: const Column(
+        child: Column(
           children: [
             Row(
               children: [
                 CircleAvatar(
                   radius: 20,
-                  backgroundImage: NetworkImage("https://via.placeholder.com/40x40"),
+                  backgroundImage:
+                      NetworkImage("https://via.placeholder.com/40x40"),
                 ),
                 SizedBox(width: 12),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'علی فدوی',
-                      style: TextStyle( fontFamily: 'Peyda',
+                      doctorName,
+                      style: TextStyle(
+                        fontFamily: 'Peyda',
                         color: Color(0xFF0D111B),
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -38,7 +42,8 @@ class DoctorProfile extends StatelessWidget {
                     SizedBox(height: 4),
                     Text(
                       'کلیه و مجاری ادراری',
-                      style: TextStyle( fontFamily: 'Peyda',
+                      style: TextStyle(
+                        fontFamily: 'Peyda',
                         color: Color(0xFF707684),
                         fontSize: 12,
                         fontWeight: FontWeight.w500,
@@ -56,7 +61,8 @@ class DoctorProfile extends StatelessWidget {
                 Expanded(
                   child: Text(
                     'تمامی پزشکان توسط دیپ‌سنس، بررسی و تایید شده‌اند.',
-                    style: TextStyle( fontFamily: 'Peyda',
+                    style: TextStyle(
+                      fontFamily: 'Peyda',
                       color: Color(0xFF2B303A),
                       fontSize: 12,
                       fontWeight: FontWeight.w400,

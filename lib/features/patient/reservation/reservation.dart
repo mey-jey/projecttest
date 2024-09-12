@@ -1,12 +1,8 @@
-import 'dart:ffi';
-
 import 'package:doctor_app/models/comment.dart';
 import 'package:doctor_app/widgets/tabbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../utils/theme.dart';
 import '../../../widgets/comments_bottom_sheet.dart';
 import '../../../widgets/comments_header.dart';
 import '../../../widgets/comments_item.dart';
@@ -16,6 +12,11 @@ import '../../../widgets/patient_reservation_price.dart';
 import '../../../widgets/rounded_button.dart';
 
 class Reservation extends StatelessWidget {
+  String userName;
+  String id;
+
+  Reservation(this.userName,this.id);
+
   final List<Comment> commentItems = [
     Comment( commentDate: 'دیروز',
         commentText: "ریزبینی، سوالات با جزئیات پزشک، تجربه یک مشاوره پزشکی خوب رو به شما میده و شما این حس رو پیدا نمی‌کنید که ایشون با یک نسخه دادن قصد دارن شمارو رو از سر خودشون باز کنن. حتما و قطعا رضایت کامل خواهید داشت بعد از مشاوره پزشکی. از آقای دکتر بابت تعهد و رفتار حرفه ای پزشکیشون تشکر میکنم. اگر به خودتون اهمیت می‌دین در انتخاب ایشون تردید نکنید.",
@@ -59,7 +60,7 @@ class Reservation extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   TopBar(
-                      text: "",
+                      text: this.id,
                       leftIcon: const Icon(
                         Icons.share_outlined,
                         size: 25,
@@ -72,7 +73,7 @@ class Reservation extends StatelessWidget {
                       ),
                       onClick1: () {},
                       onClick2: () {}),
-                  PatientReservationHeader(),
+                  PatientReservationHeader(userName),
                   PatientReservationAddress(),
                   CommentsHeader(),
                   CommentItem(activeStar: 3,commentDate: "دیروز",
@@ -108,7 +109,8 @@ class Reservation extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   print("object");
-                  context.go("/reservation/choose_date");
+                  context.goNamed("choose_date",
+                      pathParameters: {"id": this.id, "name": this.userName});
                 },
                 child: PatientReservationPrice(buttonText: 'گرفتن نوبت مشاوره',
                   priceText: '550,000',

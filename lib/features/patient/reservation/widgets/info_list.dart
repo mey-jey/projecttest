@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
@@ -10,18 +9,39 @@ class InfoListWidget extends StatelessWidget {
     'شغل',
     'مدرک تحصیلی',
   ];
-  Map<int,String> response = {};
+  String name = "";
+  String bod = "";
+  String job = "";
+  String edu = "";
+
+  Function(String) onName;
+  Function(String) onBod;
+  Function(String) onJob;
+  Function(String) onEdu;
+
+  InfoListWidget(
+      {super.key,
+      required this.name,
+      required this.bod,
+      required this.job,
+      required this.edu,
+      required this.onName,
+      required this.onBod,
+      required this.onJob,
+      required this.onEdu});
 
   @override
   Widget build(BuildContext context) {
-    void _showBottomSheet(BuildContext context, String title) {
+    void _showBottomSheet(BuildContext context, String title, String value,
+        Function(String) onAcceptClick) {
       showModalBottomSheet(
         context: context,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
         ),
         builder: (context) {
-          return _TextInput(title: title);
+          return _TextInput(
+              title: title, value: value, onAcceptClick: onAcceptClick);
         },
       );
     }
@@ -37,34 +57,64 @@ class InfoListWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RowItem(title: items[0], value: 'محمدهادی احمدیان',onTap: () {
-            _showBottomSheet(context, items[0]);
-          },),
-          const Divider(height: 0,),
-          RowItem(title: items[1], onTap: () {
-            _showBottomSheet(context, items[1]);
-          },),
-          const Divider(height: 0,),
-          RowItem(title: items[2], onTap: () {
-            _showBottomSheet(context, items[2]);
-          },),
-          const Divider(height: 0,),
-          RowItem(title: items[3], onTap: () {
-            _showBottomSheet(context, items[3]);
-          },),
+          RowItem(
+            title: items[0],
+            value: name,
+            onTap: () {
+              _showBottomSheet(context, items[0], name, onName);
+            },
+          ),
+          const Divider(
+            height: 0,
+          ),
+          RowItem(
+            value: bod,
+            title: items[1],
+            onTap: () {
+              _showBottomSheet(context, items[1], bod, onBod);
+            },
+          ),
+          const Divider(
+            height: 0,
+          ),
+          RowItem(
+            value: job,
+            title: items[2],
+            onTap: () {
+              _showBottomSheet(context, items[2], job, onJob);
+            },
+          ),
+          const Divider(
+            height: 0,
+          ),
+          RowItem(
+            value: edu,
+            title: items[3],
+            onTap: () {
+              _showBottomSheet(context, items[3], edu, onEdu);
+            },
+          ),
         ],
       ),
     );
   }
-
 }
 
 class _TextInput extends StatelessWidget {
   final String title;
-  const _TextInput({super.key, required this.title});
+  final String value;
+  Function(String) onAcceptClick;
+  TextEditingController controller = TextEditingController();
+
+  _TextInput(
+      {super.key,
+      required this.title,
+      required this.onAcceptClick,
+      this.value = ""});
 
   @override
   Widget build(BuildContext context) {
+    controller.text = value;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -115,6 +165,7 @@ class _TextInput extends StatelessWidget {
             ),
             child: TextField(
               textAlign: TextAlign.right,
+              controller: controller,
               decoration: InputDecoration(
                 hintText: 'اینجا بنویس',
                 fillColor: Colors.transparent,
@@ -131,21 +182,30 @@ class _TextInput extends StatelessWidget {
           ),
           SizedBox(height: 24),
           // Confirm button
-          Container(
-            width: double.infinity,
-            height: 56,
-            decoration: BoxDecoration(
-              color: Color(0xFFF1F4F7),
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Center(
-              child: Text(
-                'تایید',
-                style: TextStyle(
-                  color: Color(0xFFC9CFD8),
-                  fontSize: 14,
-                  fontFamily: 'Peyda',
-                  fontWeight: FontWeight.w500,
+          GestureDetector(
+            onTap: () {
+              if (controller.text.isEmpty) {
+                return;
+              }
+              onAcceptClick(controller.text);
+              context.pop();
+            },
+            child: Container(
+              width: double.infinity,
+              height: 56,
+              decoration: BoxDecoration(
+                color: const Color(0xFF335BFF),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Center(
+                child: Text(
+                  'تایید',
+                  style: TextStyle(
+                    color: Color(0xFFC9CFD8),
+                    fontSize: 14,
+                    fontFamily: 'Peyda',
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
@@ -156,25 +216,23 @@ class _TextInput extends StatelessWidget {
   }
 }
 
-
-
 class RowItem extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
-  final String? value;
+  final String value;
 
   const RowItem({
     Key? key,
     required this.title,
     required this.onTap,
-    this.value,
+    required this.value,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: value == null ? _buildEmptyState() : _buildFilledState(),
+      child: value.isEmpty ? _buildEmptyState() : _buildFilledState(),
     );
   }
 
@@ -194,7 +252,8 @@ class RowItem extends StatelessWidget {
                   shape: BoxShape.circle,
                   border: Border.all(color: const Color(0xFF335BFF), width: 2),
                 ),
-                child: const Icon(Icons.add, size: 12, color: Color(0xFF335BFF)),
+                child:
+                    const Icon(Icons.add, size: 12, color: Color(0xFF335BFF)),
               ),
               const SizedBox(width: 8),
               const Text(
@@ -243,7 +302,9 @@ class RowItem extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: SvgPicture.asset("assets/svgs/edit.svg",),
+                  child: SvgPicture.asset(
+                    "assets/svgs/edit.svg",
+                  ),
                 ),
                 Text(
                   title,
@@ -283,4 +344,3 @@ class RowItem extends StatelessWidget {
     );
   }
 }
-

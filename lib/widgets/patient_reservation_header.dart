@@ -5,6 +5,9 @@ import 'package:readmore/readmore.dart';
 import '../core/utils/colors.dart';
 
 class PatientReservationHeader extends StatelessWidget {
+  String username;
+  PatientReservationHeader(this.username);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -41,7 +44,7 @@ class PatientReservationHeader extends StatelessWidget {
                                     height: 25),
                                 const SizedBox(width: 6),
                                 Text(
-                                  'علی فدوی',
+                                  username,
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color: Color(0xFF0D111B),

@@ -7,8 +7,11 @@ class DescriptionInputWidget extends StatelessWidget {
   final String checkboxSubtitle;
   final bool isChecked;
 
-  const DescriptionInputWidget({
+  Function(String) onChanged;
+
+  DescriptionInputWidget({
     super.key,
+    required this.onChanged,
     this.descriptionTitle = 'شرح حال',
     this.descriptionHint = 'توضیح کوتاهی درباره شرح حال خود و دلیل نیاز به رزرو نوبت بنویسید',
     this.checkboxTitle = 'فایل‌های الکترونیک من برای پزشک قابل دسترسی باشد',
@@ -87,6 +90,7 @@ class DescriptionInputWidget extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topRight,
                 child: TextField(
+                  onChanged: onChanged,
                   textAlign: TextAlign.right,
                   decoration: InputDecoration(
                     hintText: descriptionHint,

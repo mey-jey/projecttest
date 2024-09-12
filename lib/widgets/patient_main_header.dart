@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class PatientMainHeader extends StatelessWidget {
   @override
@@ -83,7 +84,10 @@ class PatientMainHeader extends StatelessWidget {
                       // const SizedBox(height: 12),
                       ElevatedButton.icon(
                         iconAlignment: IconAlignment.end,
-                        icon: const Icon(Icons.search,color: Colors.white,),
+                        icon: const Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
                         label: Text(
                           'جستجو کن',
                           style: TextStyle(
@@ -94,13 +98,16 @@ class PatientMainHeader extends StatelessWidget {
                             // height: 0.11,
                           ),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          // context.go("/search/search_list");
+                          context.go("/Customsearch");
+                        },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Color(0xFF335BFF),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(15.0),
                           ),
-                          minimumSize: const Size(130, 40 ),
+                          minimumSize: const Size(130, 40),
                         ),
                       ),
                     ],
